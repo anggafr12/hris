@@ -1,64 +1,254 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# HRIS — Human Resource Information System
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+A full-featured, multi-company **Human Resource Information System (HRIS)** built with **Laravel 10**. The platform centralizes the entire employee lifecycle — from recruitment and onboarding through attendance, payroll, performance, and offboarding — behind a role-based, multi-tenant web application.
+
+<p align="left">
+  <img alt="PHP" src="https://img.shields.io/badge/PHP-8.1+-777BB4?logo=php&logoColor=white">
+  <img alt="Laravel" src="https://img.shields.io/badge/Laravel-10.x-FF2D20?logo=laravel&logoColor=white">
+  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white">
+  <img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-4-7952B3?logo=bootstrap&logoColor=white">
+  <img alt="Alpine.js" src="https://img.shields.io/badge/Alpine.js-3-8BC0D0?logo=alpinedotjs&logoColor=white">
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [System Architecture](#system-architecture)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Configuration](#configuration)
+- [User Roles](#user-roles)
+- [License & Attribution](#license--attribution)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Overview
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+HRIS is a **server-rendered, monolithic web application** organized around a clean separation between a Laravel backend (business logic, persistence, authorization, integrations) and a Blade-based frontend (a responsive admin dashboard). It is designed as a **multi-tenant SaaS**: a Super Admin operates the platform and sells subscription plans to Companies, and each Company manages its own employees, data, and HR workflows in isolation.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The codebase spans **100+ Eloquent models** and **110+ controllers**, covering more than 30 distinct HR domains.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Key Features
 
-### Premium Partners
+### Core HR
+- **Employee management** — profiles, documents, departments, designations, and branches
+- **Attendance** — manual and **biometric** clock-in/out, with bulk import
+- **Timesheets & overtime** tracking
+- **Leave management** — configurable leave types, approval workflow, and leave calendar
+- **Holidays** and company-wide event scheduling
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Payroll & Finance
+- **Salary setup**, payslip generation, and payslip types
+- **Allowances, commissions, loans, and deductions**
+- **Accounting** — chart of accounts, deposits, expenses, transfers, payees/payers, and income vs. expense reports
 
-## Contributing
+### Recruitment (ATS)
+- **Job postings** and a public careers board
+- **Applicant tracking** — pipeline stages, candidate notes, and interview scheduling
+- **Offer letters** and **joining letters** with templating
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Talent & Performance
+- **Appraisals**, goal tracking, indicators, and competencies
+- **Training** management with trainers and training types
+- **Awards, promotions, transfers, resignations, terminations, warnings, and complaints**
 
-## Code of Conduct
+### Platform & Collaboration
+- **Role-Based Access Control (RBAC)** with granular permissions
+- **Real-time messaging** and notifications
+- **Support ticketing**, contracts, company policies, and announcements
+- **Zoom meeting** integration and Google Calendar sync
+- **AI-assisted content generation** (OpenAI) for templates and descriptions
+- **Multi-language** UI (i18n) including English and Indonesian
+- **Subscription plans**, coupons, referral program, and a built-in landing-page builder
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Tech Stack
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Backend
+| Concern | Technology |
+|---|---|
+| Language / Framework | **PHP 8.1**, **Laravel 10** |
+| Database | **MySQL** via Eloquent ORM & schema migrations |
+| Authentication | Laravel Breeze (web) + **Laravel Sanctum** (API tokens) |
+| Authorization | **spatie/laravel-permission** (roles & permissions) |
+| Modular architecture | **nwidart/laravel-modules** |
+| Data import/export | **maatwebsite/excel** |
+| Real-time chat | **munafio/chatify** + Pusher |
+| AI integration | **orhanerday/open-ai** |
+| Other | milon/barcode, spatie/laravel-google-calendar, laravelcollective/html, doctrine/dbal |
 
-## License
+### Frontend
+| Concern | Technology |
+|---|---|
+| Templating | **Blade** (server-side rendering) |
+| UI framework | **Bootstrap** admin theme + custom SCSS/CSS |
+| Interactivity | **Alpine.js**, jQuery ecosystem |
+| Build tooling | **Laravel Mix** (webpack), **Tailwind CSS**, PostCSS |
+| Charts & viz | ApexCharts |
+| UX components | Select2, SweetAlert2, FullCalendar, Flatpickr, Dropzone, Quill/Summernote editors, Swiper |
+| Real-time client | Pusher JS, cookie-consent |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Integrations
+- **40+ payment gateways** — Stripe, PayPal, Razorpay, Midtrans, Xendit, Flutterwave, Paystack, Mollie, Mercado Pago, PayTM, and more
+- **Email** — SMTP, Mailgun, Postmark, Amazon SES
+- **Video/Calendar** — Zoom, Google Calendar
+
+---
+
+## System Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                          Client (Browser)                      │
+│     Blade views · Bootstrap · Alpine.js · ApexCharts           │
+│                     Pusher (real-time)                         │
+└───────────────────────────────┬──────────────────────────────┘
+                                 │ HTTP / WebSocket
+┌───────────────────────────────▼──────────────────────────────┐
+│                        Laravel 10 Application                  │
+│                                                                │
+│  Routing (web.php · api.php · auth.php · channels.php)          │
+│         │                                                      │
+│  Middleware  ──►  Auth (Sanctum) · RBAC · XSS · CSRF · Tenant  │
+│         │                                                      │
+│  Controllers (110+)  ──►  Services / Utility · Mail · Jobs      │
+│         │                                                      │
+│  Eloquent Models (100+)  ──►  Policies & Permissions           │
+│         │                                                      │
+│  Modules (nwidart)  ──►  e.g. LandingPage                      │
+└───────────────────────────────┬──────────────────────────────┘
+                                 │
+┌───────────────────────────────▼──────────────────────────────┐
+│        MySQL   ·   File Storage   ·   3rd-party APIs           │
+│   (payments · email · Zoom · Google Calendar · OpenAI)        │
+└──────────────────────────────────────────────────────────────┘
+```
+
+**Design highlights**
+
+- **Multi-tenancy** — a single application instance serves many companies; data is scoped per company, with a Super Admin overseeing plans and billing.
+- **RBAC everywhere** — every action is guarded by `spatie/laravel-permission`, so menus, routes, and operations adapt to the signed-in user's role.
+- **Modular by design** — feature packages (e.g. `LandingPage`) live under `Modules/` and can be toggled independently via `modules_statuses.json`.
+- **Convention-driven MVC** — thin controllers delegate to Eloquent models and a shared `Utility` layer for cross-cutting settings (branding, email templates, currency, etc.).
+
+---
+
+## Project Structure
+
+```
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/     # 110+ controllers (HR domains + payment gateways)
+│   │   └── Middleware/      # Auth, RBAC, XSS, tenant/plan guards
+│   └── Models/              # 100+ Eloquent models
+├── Modules/
+│   └── LandingPage/         # Self-contained feature module (nwidart)
+├── config/                  # Framework & integration configuration
+├── database/
+│   ├── migrations/          # Schema definitions
+│   └── seeders/             # Default roles, permissions, demo data
+├── resources/
+│   ├── views/               # Blade templates (dashboard + 60+ feature areas)
+│   └── lang/                # i18n JSON dictionaries (en, id, ...)
+├── routes/
+│   ├── web.php              # Main application routes (~1.7k lines)
+│   ├── api.php              # Sanctum-protected API
+│   ├── auth.php             # Authentication routes
+│   └── channels.php         # Broadcast channels
+├── public/                  # Front controller, compiled assets, JS libs
+└── tailwind.config.js · webpack.mix.js
+```
+
+---
+
+## Getting Started
+
+### Requirements
+- PHP **8.1+** with extensions: `bcmath`, `curl`, `dom`, `fileinfo`, `gd`, `imagick`, `mbstring`, `mysqlnd`, `pdo`, `zip`
+- **Composer 2**
+- **Node.js 16+** and npm
+- **MySQL 8** (or MariaDB)
+
+### Installation
+
+```bash
+# 1. Clone
+git clone https://github.com/anggafr12/hris.git
+cd hris
+
+# 2. Install PHP dependencies
+composer install
+
+# 3. Install & build front-end assets
+npm install
+npm run dev          # or: npm run prod  (production build)
+
+# 4. Environment
+cp .env.example .env
+php artisan key:generate
+
+# 5. Configure the database in .env, then run migrations + seeders
+php artisan migrate --seed
+
+# 6. Link storage & serve
+php artisan storage:link
+php artisan serve
+```
+
+Then open **http://localhost:8000**.
+
+> A web-based installer is also available (`rachidlaasri/laravel-installer`) at `/install` for a guided setup on shared hosting.
+
+---
+
+## Configuration
+
+Set the following in your `.env` (see `.env.example` for the full list):
+
+```dotenv
+APP_NAME='HRIS'
+APP_URL=http://localhost
+
+DB_DATABASE=hris
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Mail (SMTP)
+MAIL_HOST=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+
+# Real-time (Pusher)
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+```
+
+Payment gateways, Zoom, Google Calendar, and OpenAI credentials are configured from the in-app **Settings** area or via `config/services.php`.
+
+> **Security:** `.env`, database dumps, logs, and user uploads are intentionally excluded from version control via `.gitignore`. Never commit real credentials — rotate any key that has been exposed.
+
+---
+
+## User Roles
+
+| Role | Capabilities |
+|---|---|
+| **Super Admin** | Operates the platform: subscription plans, coupons, global settings, and tenant companies |
+| **Company** | Manages its own employees, payroll, recruitment, and HR configuration |
+| **Employee** | Self-service portal: attendance, leave requests, payslips, documents, and profile |
+
+Permissions are fully customizable per role through the RBAC settings.
+
+---
+
+## License & Attribution
+
+This repository is based on a Laravel HRM platform and is maintained here for development and portfolio purposes. The underlying Laravel framework is open-source under the [MIT license](https://opensource.org/licenses/MIT). Third-party packages retain their respective licenses. Ensure you hold the appropriate license for any commercial redistribution of the original product.
