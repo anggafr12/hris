@@ -1,0 +1,49 @@
+# Dependencies
+/node_modules
+/vendor
+
+# Environment / secrets
+.env
+.env.backup
+.env.production
+auth.json
+
+# Laravel build & runtime
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+.phpunit.result.cache
+.phpunit.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# IDE / editor
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+*.sublime-project
+*.sublime-workspace
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Project-specific: database dumps (contain real data)
+/hris.sql
+*.sql
+
+# Uploaded content / runtime data (old owner PII: avatars, contracts, documents)
+/storage/uploads
+/storage/avatars
+/storage/contract_attechment
+/storage/framework/laravel-excel
+/storage/installed
+
+# Old owner leftovers / test helpers
+/sconfig-test.php
