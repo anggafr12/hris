@@ -22,7 +22,6 @@ A full-featured, multi-company **Human Resource Information System (HRIS)** buil
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
 - [User Roles](#user-roles)
-- [License & Attribution](#license--attribution)
 
 ---
 
@@ -246,9 +245,3 @@ Payment gateways, Zoom, Google Calendar, and OpenAI credentials are configured f
 | **Employee** | Self-service portal: attendance, leave requests, payslips, documents, and profile |
 
 Permissions are fully customizable per role through the RBAC settings.
-
----
-
-## License & Attribution
-
-This repository is based on a Laravel HRM platform and is maintained here for development and portfolio purposes. The underlying Laravel framework is open-source under the [MIT license](https://opensource.org/licenses/MIT). Third-party packages retain their respective licenses. Ensure you hold the appropriate license for any commercial redistribution of the original product.
